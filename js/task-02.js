@@ -95,29 +95,29 @@ const images = [
 
 //---------------------------------------//
 
-const gallerySet = document.querySelector('.gallery');
+// const gallerySet = document.querySelector('.gallery');
 
-images.forEach(imgItem => {
-  const setItem = document.createElement('li');
-  setItem.classList.add('set-item');
+// images.forEach(imgItem => {
+//   const setItem = document.createElement('li');
+//   setItem.classList.add('set-item');
 
-  const image = document.createElement('img');
-  image.classList.add('item-image');
+//   const image = document.createElement('img');
+//   image.classList.add('item-image');
 
   
-   image.setAttribute('src', imgItem.url);
-  image.setAttribute('alt', imgItem.alt);
+//    image.setAttribute('src', imgItem.url);
+//   image.setAttribute('alt', imgItem.alt);
 
-  image.style.width = '200px'; 
-  image.style.height = '120px'; 
+//   image.style.width = '200px'; 
+//   image.style.height = '120px'; 
 
-  setItem.append(image);
-  gallerySet.append(setItem);
-});
+//   setItem.append(image);
+//   gallerySet.append(setItem);
+// });
 
-gallerySet.style.display = 'flex'; 
-gallerySet.style.listStyleType = 'none';
-gallerySet.style.flexDirection = 'column';
+// gallerySet.style.display = 'flex'; 
+// gallerySet.style.listStyleType = 'none';
+// gallerySet.style.flexDirection = 'column';
 
 //--------------------------//
 // //работа с массивом объектов  , создание <li></li>
@@ -151,3 +151,12 @@ gallerySet.style.flexDirection = 'column';
 // }
 
 // renderFriends();
+
+const gallery = document.querySelector('.gallery');
+const htmlElements = images.map(imgItem => `
+  <li class="set-item">
+    <img class="item-image" src="${imgItem.url}" alt="${imgItem.alt}" style="width: 200px; height: 120px;">
+  </li>
+`).join('');
+
+gallery.innerHTML = `<ul style="display: flex; list-style-type: none; flex-direction: column;">${htmlElements}</ul>`;
